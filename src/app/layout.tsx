@@ -10,6 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: site.name,
   description: site.tagline,
   openGraph: {

@@ -1,5 +1,6 @@
 export const site = {
   name: "Sean Dempsey",
+  url: "https://sean-dempsey.com",
   tagline: "I build tools that help businesses make better decisions.",
   bio: "",
   newsletter: {
