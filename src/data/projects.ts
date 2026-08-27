@@ -30,7 +30,7 @@ export const projects: Project[] = [
     accentRing: "hover:ring-emerald-300",
   },
   {
-    name: "Ads Breakeven",
+    name: "Ad Breakeven",
     url: "https://adbreakeven.com",
     description:
       "Find your minimum ROAS, CPA, and CPC for ecommerce and lead gen.",
