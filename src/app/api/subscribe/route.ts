@@ -11,6 +11,15 @@ function parseButtondownError(detail: string) {
   }
 }
 
+function getClientIp(request: Request) {
+  const forwarded = request.headers.get("x-forwarded-for");
+  if (forwarded) {
+    return forwarded.split(",")[0]?.trim() || undefined;
+  }
+
+  return request.headers.get("x-real-ip")?.trim() || undefined;
+}
+
 export async function POST(request: Request) {
   const body = (await request.json()) as { email?: string };
   const email = body.email?.trim().toLowerCase();
@@ -28,13 +37,20 @@ export async function POST(request: Request) {
     );
   }
 
+  const clientIp = getClientIp(request);
+
   const response = await fetch("https://api.buttondown.com/v1/subscribers", {
     method: "POST",
     headers: {
       Authorization: `Token ${apiKey}`,
       "Content-Type": "application/json",
+      "X-Buttondown-Bypass-Firewall": "true",
     },
-    body: JSON.stringify({ email_address: email, type: "regular" }),
+    body: JSON.stringify({
+      email_address: email,
+      type: "regular",
+      ...(clientIp ? { ip_address: clientIp } : {}),
+    }),
   });
 
   if (response.ok) {
