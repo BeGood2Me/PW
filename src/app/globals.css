@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: linear-gradient(
+    145deg,
+    #fff7ed 0%,
+    #fdf2f8 30%,
+    #ede9fe 60%,
+    #f0f9ff 100%
+  );
+  background-attachment: fixed;
+}
