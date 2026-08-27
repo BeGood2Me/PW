@@ -25,6 +25,14 @@
   },
   "allowScripts": {
     "sharp": true,
-    "unrs-resolver": true
+    "unrs-resolver": true,
+    "sharp@0.34.5": true,
+    "unrs-resolver@1.12.2": true
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
